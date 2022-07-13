@@ -21,13 +21,11 @@ function jwtGenerator(payload, day = 7) {
 function verifyToken(token) {
 	try {
 		const result = jwt.verify(token, SECRET_KEY);
-		console.log(`🥷🏻✶ | file: utils.js | line 24 | verifyToken | result`, result);
 		if (!result?.username) {
 			throw { status: 401, message: 'login failed.' };
 		}
 		return result;
 	} catch (error) {
-		console.log(`🥷🏻✶ | file: utils.js | line 28 | verifyToken | error`, error);
 		throw { status: 401, message: 'login failed => ' + error };
 	}
 }

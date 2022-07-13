@@ -153,10 +153,6 @@ async function uploadProfileImage(req, res, next) {
 	return res.json({
 		files: JSON.stringify(req.files),
 	});
-	try {
-	} catch (error) {
-		next(error);
-	}
 }
 
 module.exports = {

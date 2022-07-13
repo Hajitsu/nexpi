@@ -27,6 +27,7 @@ async function register(req, res, next) {
 		next(error);
 	}
 }
+
 async function login(req, res, next) {
 	try {
 		const { username, password } = req.body;
@@ -43,6 +44,7 @@ async function login(req, res, next) {
 		next(error);
 	}
 }
+
 async function resetPassword(req, res, next) {
 	try {
 	} catch (error) {
