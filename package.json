@@ -7,8 +7,8 @@
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Hamid Mohammadi",
+  "license": "Hajitsu License",
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
