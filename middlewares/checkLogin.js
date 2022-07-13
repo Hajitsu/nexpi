@@ -21,6 +21,4 @@ async function autoLogin(req, res, next) {
 	}
 }
 
-module.exports = {
-	autoLogin,
-};
+module.exports = {};

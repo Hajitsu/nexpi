@@ -13,7 +13,7 @@ const { upload } = require('../modules/utils');
 router.post('/create', createUser);
 router.post('/create', createUser);
 router.get('/', listOfUsers);
-router.get('/profile', autoLogin, (req, res, next) => {
+router.get('/profile', (req, res, next) => {
 	return res.json({ user: req.user });
 });
 router.get('/:id', getUserById);

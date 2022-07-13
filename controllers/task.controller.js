@@ -55,6 +55,38 @@ async function getAllTask(req, res, next) {
 
 async function updateTask(req, res, next) {
 	try {
+		const { id: _id } = req.params;
+		const userId = req.user._id;
+
+		const task = await taskModel.findOne({ _id, userId });
+		if (!task) throw { status: 404, message: 'task not found' };
+
+		const data = { ...req.body };
+
+		Object.entries(data).forEach(([key, value]) => {
+			if (!value || ['', ' ', '.', null, undefined].includes(value) || value.length < 3) {
+				delete data[key];
+			}
+			if (!['title', 'text', 'category'].includes(key)) {
+				delete data[key];
+			}
+		});
+
+		const result = await taskModel.updateOne(
+			{ _id },
+			{
+				$set: data,
+			}
+		);
+
+		if (result.modifiedCount > 0)
+			return res.status(200).json({
+				status: 200,
+				success: true,
+				message: 'update true',
+			});
+
+		throw { status: 403, message: 'task did not update' };
 	} catch (error) {
 		next(error);
 	}
